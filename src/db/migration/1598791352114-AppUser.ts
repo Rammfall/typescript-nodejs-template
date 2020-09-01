@@ -1,14 +1,15 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export class AppUser1598791352114 implements MigrationInterface {
+  // eslint-disable-next-line class-methods-use-this
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'AppUser',
+        name: 'app_user',
         columns: [
           {
             name: 'id',
-            type: 'serial',
+            type: 'bigserial',
             isNullable: false,
             isPrimary: true,
             generationStrategy: 'increment',
@@ -37,6 +38,7 @@ export class AppUser1598791352114 implements MigrationInterface {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   public async down(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.dropTable('AppUser');
   }

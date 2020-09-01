@@ -22,6 +22,8 @@
     "prettier"
   ],
   "rules": {
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "no-return-await": "off",
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

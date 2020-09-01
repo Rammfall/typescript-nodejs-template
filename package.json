@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/Rammfall/typescript-nodejs-template#readme",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "^1.19.0",
     "@types/cookie-parser": "^1.4.2",
     "@types/cors": "^2.8.7",
@@ -65,12 +66,14 @@
     "typescript": "^4.0.2"
   },
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "helmet": "^4.1.0",
     "jsonwebtoken": "^8.5.1",
+    "otplib": "^12.0.1",
     "pg": "^8.3.3",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.25",
