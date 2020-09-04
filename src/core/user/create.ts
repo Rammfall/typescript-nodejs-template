@@ -1,6 +1,7 @@
 import { hash } from 'bcrypt';
 
 import AppUser from '../../db/entity/AppUser';
+import { BCRYPT_NUM } from '../../config/application';
 
 export default async function createUser(
   username: string,
@@ -11,7 +12,7 @@ export default async function createUser(
 
   user.username = username;
   user.email = email;
-  user.password = await hash(password, 10);
+  user.password = await hash(password, BCRYPT_NUM);
 
   return await user.save();
 }

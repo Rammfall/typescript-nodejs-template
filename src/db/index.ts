@@ -2,6 +2,7 @@ import { createConnection, ConnectionOptions } from 'typeorm';
 
 import { db } from '../../config';
 import AppUser from './entity/AppUser';
+import UserSession from './entity/UserSession';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -30,7 +31,7 @@ const connection: ConnectionOptions = {
   username,
   password,
   host,
-  entities: [AppUser],
+  entities: [AppUser, UserSession],
   extra: {
     ssl,
   },

@@ -1,6 +1,7 @@
 const application = {
   environment: process.env.environment || 'development',
   port: process.env.port || 3000,
+  bcryptSalt: process.env.bcryptSalt || 10,
 };
 const db = {
   database: process.env.dbName || 'template',

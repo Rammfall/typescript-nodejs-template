@@ -24,6 +24,7 @@
   "rules": {
     "import/prefer-default-export": "off",
     "no-return-await": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "jest/no-hooks": "off"
   }
 }

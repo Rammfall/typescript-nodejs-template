@@ -4,3 +4,7 @@ export const EMAIL_MIN_LENGTH = 6;
 export const EMAIL_MAX_LENGTH = 320;
 export const PASSWORD_MIN_LENGTH = 8;
 export const PASSWORD_MAX_LENGTH = 50;
+export const ERROR_MAIL_EXIST = 'Mail are exist';
+export const ERROR_USERNAME_EXIST = 'Username are exist';
+export const ERROR_EMAIL_NOT_EXIST = 'Email not exist';
+export const ERROR_PASSWORD_NOT_CORRECT = 'Password not correct';
