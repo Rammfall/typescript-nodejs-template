@@ -9,6 +9,7 @@
     "lint": "eslint \"src/**/*.ts\" --max-warnings 0",
     "build": "tsc",
     "dev": "nodemon",
+    "start": "node dist/index.js",
     "windows:db:migrate": "ts-node node_modules\\typeorm\\cli.js migration:run",
     "windows:db:revert": "ts-node node_modules\\typeorm\\cli.js migration:revert",
     "windows:db:reboot": "npm run windows:db:revert && npm run windows:db:migrate",

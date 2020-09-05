@@ -1,10 +1,11 @@
 import { application } from '../../config';
 
-const { port, environment, bcryptSalt } = application;
+const { port, environment, bcryptSalt, twoFaToken } = application;
 
 export const PORT: number = +port;
 export const ENV: string = environment;
 export const BCRYPT_NUM: number = +bcryptSalt;
+export const TWO_FA_TOKEN: string = twoFaToken;
 export const JWT_ACCESS_SECRET: string =
   process.env.JWT_ACCESS_SECRET || 'secret';
 export const JWT_ACCESS_EXPIRED: string =

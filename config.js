@@ -2,6 +2,7 @@ const application = {
   environment: process.env.environment || 'development',
   port: process.env.port || 3000,
   bcryptSalt: process.env.bcryptSalt || 10,
+  twoFaToken: process.env.twoFaToken || 'tsettesttesttsettsetes',
 };
 const db = {
   database: process.env.dbName || 'template',
