@@ -1,12 +1,12 @@
 import { name, internet } from 'faker';
 
 import { isExistUser } from './isExistUser';
-import AppUser from '../../../db/entity/AppUser';
+import User from '../../../db/entity/User';
 import { createUser } from '../../../testUtils/dbUser';
 import { afterAllHook, beforeAllHook } from '../../../testUtils/hooks';
 
 describe('check unique function', () => {
-  let user: AppUser;
+  let user: User;
 
   beforeAll(async () => {
     await beforeAllHook();

@@ -2,7 +2,7 @@ import request from 'supertest';
 import validator from 'validator';
 
 import { afterAllHook, beforeAllHook } from '../../testUtils/hooks';
-import AppUser from '../../db/entity/AppUser';
+import User from '../../db/entity/User';
 import { createUser } from '../../testUtils/dbUser';
 import application from '../../application';
 import { readCookie } from '../../testUtils/readCookie';
@@ -16,7 +16,7 @@ import isJWT = validator.isJWT;
 
 describe('api tests login', () => {
   const password = '11111111';
-  let user: AppUser;
+  let user: User;
 
   beforeAll(async () => {
     await beforeAllHook();

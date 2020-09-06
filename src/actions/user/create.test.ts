@@ -3,7 +3,7 @@ import { name, internet } from 'faker';
 
 import application from '../../application';
 import { afterAllHook, beforeAllHook } from '../../testUtils/hooks';
-import AppUser from '../../db/entity/AppUser';
+import User from '../../db/entity/User';
 import { createUser } from '../../testUtils/dbUser';
 import { ERROR_MAIL_EXIST, ERROR_USERNAME_EXIST } from '../../constants/user';
 
@@ -16,7 +16,7 @@ describe('api test on create account', () => {
   });
 
   afterAll(async () => {
-    const user = await AppUser.findOne({ email });
+    const user = await User.findOne({ email });
     await user?.remove();
     await afterAllHook();
   });
@@ -26,7 +26,7 @@ describe('api test on create account', () => {
     const result = await request(application)
       .post('/api/v1/user/create/')
       .send({ username, email, password: '11111111' });
-    const user: AppUser | undefined = await AppUser.findOne({ email });
+    const user: User | undefined = await User.findOne({ email });
     const { username: usernameRequest, email: emailRequest } = result.body;
 
     expect(result.status).toStrictEqual(200);
@@ -38,7 +38,7 @@ describe('api test on create account', () => {
 
   it('error with request not unique email', async () => {
     expect.assertions(2);
-    const existUser: AppUser = await createUser();
+    const existUser: User = await createUser();
     const { email: existEmail, username: existUsername } = existUser;
 
     const result = await request(application)
@@ -57,7 +57,7 @@ describe('api test on create account', () => {
 
   it('error with request not unique username', async () => {
     expect.assertions(2);
-    const existUser: AppUser = await createUser();
+    const existUser: User = await createUser();
     const { username: existUsername } = existUser;
 
     const result = await request(application)

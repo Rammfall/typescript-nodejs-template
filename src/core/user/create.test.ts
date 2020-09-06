@@ -1,11 +1,11 @@
 import { name, internet } from 'faker';
 
 import { afterAllHook, beforeAllHook } from '../../testUtils/hooks';
-import AppUser from '../../db/entity/AppUser';
+import User from '../../db/entity/User';
 import createUser from './create';
 
 describe('test create core logic', () => {
-  let user: AppUser;
+  let user: User;
 
   beforeAll(async () => {
     await beforeAllHook();
@@ -22,7 +22,7 @@ describe('test create core logic', () => {
     const email = internet.email();
 
     user = await createUser(username, email, '11');
-    const dbUser: AppUser | undefined = await AppUser.findOne({ username });
+    const dbUser: User | undefined = await User.findOne({ username });
 
     expect(user).toStrictEqual(dbUser);
   });

@@ -1,7 +1,7 @@
 import validator from 'validator';
 
 import { afterAllHook, beforeAllHook } from '../../testUtils/hooks';
-import AppUser from '../../db/entity/AppUser';
+import User from '../../db/entity/User';
 import loginUser from './login';
 import { createUser } from '../../testUtils/dbUser';
 import { ERROR_PASSWORD_NOT_CORRECT } from '../../constants/user';
@@ -9,7 +9,7 @@ import { ERROR_PASSWORD_NOT_CORRECT } from '../../constants/user';
 const { isJWT, isUUID } = validator;
 
 describe('check core login', () => {
-  let user: AppUser;
+  let user: User;
 
   beforeAll(async () => {
     await beforeAllHook();

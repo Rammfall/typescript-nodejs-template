@@ -4,6 +4,10 @@
     "coverage",
     "dbUtils",
     "ormconfig.js",
-    "jest.config.js"
-  ]
+    "jest.config.js",
+    "**/*.test.*"
+  ],
+  "compilerOptions": {
+    "outDir": "dist"
+  }
 }

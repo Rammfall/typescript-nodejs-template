@@ -3,7 +3,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 @Entity({
   name: 'app_user',
 })
-export default class AppUser extends BaseEntity {
+export default class User extends BaseEntity {
   @PrimaryGeneratedColumn({
     type: 'bigint',
   })

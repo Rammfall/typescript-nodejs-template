@@ -4,7 +4,7 @@ import { Shape } from 'yup';
 
 const validatePostBody = (
   shape: Shape<any, any>,
-  path: 'query' | 'body' = 'body'
+  path: 'query' | 'body' | 'cookies' = 'body'
 ) => {
   return async (
     req: Request,

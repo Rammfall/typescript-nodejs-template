@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryColumn, BaseEntity, ManyToOne } from 'typeorm';
 
-import AppUser from './AppUser';
+import User from './User';
 
 @Entity({
   name: 'user_session',
@@ -26,6 +26,6 @@ export default class UserSession extends BaseEntity {
   })
   userId!: number;
 
-  @ManyToOne(() => AppUser, (user: AppUser) => user.id)
-  user!: AppUser;
+  @ManyToOne(() => User, (user: User) => user.id)
+  user!: User;
 }

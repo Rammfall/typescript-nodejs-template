@@ -1,4 +1,4 @@
-import AppUser from '../../../db/entity/AppUser';
+import User from '../../../db/entity/User';
 
 interface UniqueField {
   username?: string;
@@ -6,7 +6,7 @@ interface UniqueField {
 }
 
 export async function isExistUser(fields: UniqueField): Promise<boolean> {
-  const user: AppUser | undefined = await AppUser.findOne(fields);
+  const user: User | undefined = await User.findOne(fields);
 
   return !!user;
 }
