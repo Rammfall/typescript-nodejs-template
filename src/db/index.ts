@@ -3,6 +3,7 @@ import { createConnection, ConnectionOptions } from 'typeorm';
 import { db } from '../../config';
 import User from './entity/User';
 import UserSession from './entity/UserSession';
+import { ENV } from '../config/application';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -40,6 +41,10 @@ const connection: ConnectionOptions = {
 export default (async function instance() {
   await createConnection(connection);
 
-  // eslint-disable-next-line no-console
-  console.log('DB connect in application');
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  if (ENV !== 'test' || ENV !== 'ci') {
+    // eslint-disable-next-line no-console
+    console.log('DB connect in application');
+  }
 })();
