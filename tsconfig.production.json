@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "coverage",
+    "dbUtils",
+    "ormconfig.js",
+    "jest.config.js"
+  ]
+}
