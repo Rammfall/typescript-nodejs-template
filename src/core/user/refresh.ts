@@ -16,5 +16,6 @@ export default async function refreshUser(
     return await createSession(user);
   }
 
+  await session?.remove();
   throw new Error(ERROR_SESSION_ARE_EXPIRED);
 }

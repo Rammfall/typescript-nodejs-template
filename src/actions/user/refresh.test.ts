@@ -8,6 +8,7 @@ import application from '../../application';
 import UserSession from '../../db/entity/UserSession';
 import { createSession } from '../../testUtils/session';
 import { readCookie } from '../../testUtils/readCookie';
+import { ERROR_SESSION_ARE_EXPIRED } from '../../constants/user';
 import isUUID = validator.isUUID;
 import isJWT = validator.isJWT;
 
@@ -38,6 +39,20 @@ describe('refresh on api', () => {
     expect(result.status).toStrictEqual(200);
     expect(isUUID(newRefreshToken)).toStrictEqual(true);
     expect(isJWT(newAccessToken)).toStrictEqual(true);
+    expect(await UserSession.findOne({ refreshToken })).toBeUndefined();
+  });
+
+  it('error refresh with expired token', async () => {
+    expect.assertions(3);
+    const { accessToken, refreshToken } = await createSession(user, -5);
+    const result = await request(application)
+      .post('/api/v1/user/refresh/')
+      .set('Cookie', [
+        `accessToken=${accessToken};refreshToken=${refreshToken}`,
+      ]);
+
+    expect(result.status).toStrictEqual(400);
+    expect(result.body.info).toStrictEqual(ERROR_SESSION_ARE_EXPIRED);
     expect(await UserSession.findOne({ refreshToken })).toBeUndefined();
   });
 });
