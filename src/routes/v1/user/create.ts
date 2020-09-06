@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import * as yup from 'yup';
 
-import validatePostBody from '../../../modules/validation';
+import validatePostBody from '../../../middlewares/validation';
 import {
   EMAIL_MAX_LENGTH,
   EMAIL_MIN_LENGTH,
