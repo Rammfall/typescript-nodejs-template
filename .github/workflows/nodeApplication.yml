@@ -45,6 +45,8 @@ jobs:
         dbName: postgres
         dbPassword: postgres
       run: npm run db:migrate
+    - name: Run linters
+      run: npm run lint
     - name: Run tests
       env:
         CI: true
