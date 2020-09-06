@@ -1,5 +1,5 @@
 process.env.dbName = process.env.dbName || 'template_test';
-process.env.environment = process.env.environment || 'test';
+process.env.environment = 'test';
 
 module.exports = {
   clearMocks: true,

@@ -41,9 +41,7 @@ const connection: ConnectionOptions = {
 export default (async function instance() {
   await createConnection(connection);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  if (ENV !== 'test' || ENV !== 'ci') {
+  if (ENV !== 'test') {
     // eslint-disable-next-line no-console
     console.log('DB connect in application');
   }
