@@ -3,8 +3,7 @@ const application = {
   port: process.env.port || 3000,
   bcryptSalt: process.env.bcryptSalt || 10,
   twoFaToken: process.env.twoFaToken || 'tsettesttesttsettsetes',
-  refreshTokenExpired:
-    process.env.refreshTokenExpired || 1000 * 60 * 60 * 24 * 75,
+  refreshTokenExpired: process.env.refreshTokenExpired || 6480000000,
   jwtAccessSecret: process.env.jwtAccessSecret || 'secret',
   jwtAccessExpired: process.env.jwtAccessExpired || '15m',
 };

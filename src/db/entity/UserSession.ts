@@ -24,7 +24,7 @@ export default class UserSession extends BaseEntity {
   @Column({
     type: 'bigint',
   })
-  userId!: number;
+  readonly userId!: number;
 
   @ManyToOne(() => User, (user: User) => user.id)
   user!: User;

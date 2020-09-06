@@ -9,12 +9,7 @@ import {
   REFRESH_TOKEN_EXPIRED,
 } from '../../../config/application';
 
-export default async function createSession(
-  user: User,
-  jwtToken = JWT_ACCESS_SECRET,
-  expiresIn = JWT_ACCESS_EXPIRED,
-  refreshTokenExpired = REFRESH_TOKEN_EXPIRED
-): Promise<UserSession> {
+export default async function createSession(user: User): Promise<UserSession> {
   const { username, email, id } = user;
   const session: UserSession = new UserSession();
 
@@ -24,12 +19,12 @@ export default async function createSession(
       id,
       email,
     },
-    jwtToken,
-    { expiresIn }
+    JWT_ACCESS_SECRET,
+    { expiresIn: JWT_ACCESS_EXPIRED }
   );
   session.refreshToken = v4();
   session.user = user;
-  session.expiredDate = new Date(+new Date() + refreshTokenExpired);
+  session.expiredDate = new Date(+new Date() + REFRESH_TOKEN_EXPIRED);
 
   return await session.save();
 }

@@ -24,7 +24,7 @@ describe('check core login', () => {
   it('check success login', async () => {
     expect.assertions(2);
     const { email } = user;
-    const { accessToken, refreshToken } = await loginUser(email, '1111');
+    const { accessToken, refreshToken } = await loginUser(email, '11111111');
 
     expect(isUUID(refreshToken)).toStrictEqual(true);
     expect(isJWT(accessToken)).toStrictEqual(true);
