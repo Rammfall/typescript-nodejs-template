@@ -1,6 +1,5 @@
 import UserSession from '../../db/entity/UserSession';
 import { ERROR_SESSION_ARE_EXPIRED } from '../../constants/user';
-import createSession from './session/createSession';
 import createSessionData from './session/createSessionData';
 
 export default async function refreshUser(

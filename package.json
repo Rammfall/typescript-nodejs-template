@@ -99,12 +99,12 @@
   "lint-staged": {
     "*.ts": [
       "prettier --write",
-      "eslint --fix",
+      "eslint --fix --max-warnings 0",
       "jest --findRelatedTests"
     ],
     "*.js": [
       "prettier --write",
-      "eslint --fix",
+      "eslint --fix --max-warnings 0",
       "jest --findRelatedTests"
     ]
   },
