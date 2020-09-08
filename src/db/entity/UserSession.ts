@@ -1,5 +1,6 @@
 import { Column, Entity, PrimaryColumn, BaseEntity, ManyToOne } from 'typeorm';
 
+// eslint-disable-next-line import/no-cycle
 import User from './User';
 
 @Entity({
@@ -20,6 +21,12 @@ export default class UserSession extends BaseEntity {
     type: 'timestamp',
   })
   expiredDate!: Date;
+
+  @Column({
+    type: 'varchar',
+    length: '30',
+  })
+  device!: string;
 
   @Column({
     type: 'bigint',

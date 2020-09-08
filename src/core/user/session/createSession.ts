@@ -9,11 +9,14 @@ import {
   REFRESH_TOKEN_EXPIRED,
 } from '../../../config/application';
 
-export default async function createSession(user: User): Promise<UserSession> {
+export default async function createSession(
+  user: User,
+  device: string
+): Promise<UserSession> {
   const { username, email, id } = user;
   const session: UserSession = new UserSession();
 
-  session.accessToken = sign(
+  session.accessToken = await sign(
     {
       username,
       id,
@@ -24,6 +27,7 @@ export default async function createSession(user: User): Promise<UserSession> {
   );
   session.refreshToken = v4();
   session.user = user;
+  session.device = device;
   session.expiredDate = new Date(+new Date() + REFRESH_TOKEN_EXPIRED);
 
   return await session.save();

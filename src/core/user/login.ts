@@ -7,12 +7,13 @@ import createSession from './session/createSession';
 
 export default async function loginUser(
   email: string,
-  password: string
+  password: string,
+  device: string
 ): Promise<UserSession> {
   const user: User | undefined = await User.findOne({ email });
 
   if (user && (await compare(password, user.password))) {
-    return await createSession(user);
+    return await createSession(user, device);
   }
 
   throw new Error(ERROR_PASSWORD_NOT_CORRECT);

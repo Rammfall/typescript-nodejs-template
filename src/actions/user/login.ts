@@ -9,13 +9,18 @@ export default async function loginUserHandler(
   res: Response
 ): Promise<any> {
   const { email, password }: { email: string; password: string } = req.body;
+  const device = req.headers['user-agent'] || 'Not recognized';
 
   if (!(await isExistUser({ email }))) {
     return res.status(400).json({ info: ERROR_EMAIL_NOT_EXIST });
   }
 
   try {
-    const { refreshToken, accessToken } = await loginUser(email, password);
+    const { refreshToken, accessToken } = await loginUser(
+      email,
+      password,
+      device
+    );
     cookieSet(res, [
       ['refreshToken', refreshToken],
       ['accessToken', accessToken],

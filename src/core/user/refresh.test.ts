@@ -20,15 +20,11 @@ describe('check refresh logic', () => {
   });
 
   it('success refresh if token not expired and old session removed', async () => {
-    expect.assertions(2);
+    expect.assertions(1);
     const { refreshToken } = await createSession(user);
-    const newSession: UserSession = await refreshUser(refreshToken);
-    const expiredSession: UserSession | undefined = await UserSession.findOne({
-      refreshToken,
-    });
+    const updateSession: UserSession = await refreshUser(refreshToken);
 
-    expect(expiredSession).toBeUndefined();
-    expect(newSession !== undefined).toStrictEqual(true);
+    expect(updateSession.refreshToken !== refreshToken).toStrictEqual(true);
   });
 
   it('error refresh if token expired', async () => {

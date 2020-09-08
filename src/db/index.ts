@@ -4,6 +4,7 @@ import { db } from '../../config';
 import User from './entity/User';
 import UserSession from './entity/UserSession';
 import { ENV } from '../config/application';
+import UserProfile from './entity/UserProfile';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -32,7 +33,7 @@ const connection: ConnectionOptions = {
   username,
   password,
   host,
-  entities: [User, UserSession],
+  entities: [User, UserSession, UserProfile],
   extra: {
     ssl,
   },

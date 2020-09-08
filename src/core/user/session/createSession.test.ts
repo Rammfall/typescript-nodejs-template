@@ -19,7 +19,7 @@ describe('check function create session', () => {
 
   it('user session create', async () => {
     expect.assertions(1);
-    const session: UserSession = await createSession(user);
+    const session: UserSession = await createSession(user, 'chrome');
 
     expect(session.expiredDate > new Date()).toStrictEqual(true);
   });

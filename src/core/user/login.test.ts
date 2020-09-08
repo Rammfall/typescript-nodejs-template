@@ -24,7 +24,11 @@ describe('check core login', () => {
   it('check success login', async () => {
     expect.assertions(2);
     const { email } = user;
-    const { accessToken, refreshToken } = await loginUser(email, '11111111');
+    const { accessToken, refreshToken } = await loginUser(
+      email,
+      '11111111',
+      'Chrome'
+    );
 
     expect(isUUID(refreshToken)).toStrictEqual(true);
     expect(isJWT(accessToken)).toStrictEqual(true);
@@ -33,7 +37,7 @@ describe('check core login', () => {
   it('throwing error', async () => {
     expect.assertions(1);
     const { email } = user;
-    await expect(loginUser(email, '111')).rejects.toThrow(
+    await expect(loginUser(email, '111', 'Chrome')).rejects.toThrow(
       ERROR_PASSWORD_NOT_CORRECT
     );
   });

@@ -20,6 +20,7 @@ export async function createSession(
 
   session.user = user;
   session.refreshToken = v4();
+  session.device = 'chrome';
   session.expiredDate = new Date(+new Date() + timeToEndRefresh);
   session.accessToken = await sign({ id, email, username }, jwtSecret, {
     expiresIn,

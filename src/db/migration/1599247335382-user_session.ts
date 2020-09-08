@@ -23,6 +23,12 @@ export class userSession1599247335382 implements MigrationInterface {
             isNullable: false,
           },
           {
+            name: 'device',
+            type: 'varchar',
+            length: '30',
+            isNullable: false,
+          },
+          {
             name: 'expiredDate',
             type: 'timestamp',
             isNullable: false,

@@ -39,7 +39,7 @@ describe('refresh on api', () => {
     expect(result.status).toStrictEqual(200);
     expect(isUUID(newRefreshToken)).toStrictEqual(true);
     expect(isJWT(newAccessToken)).toStrictEqual(true);
-    expect(await UserSession.findOne({ refreshToken })).toBeUndefined();
+    expect(refreshToken !== newRefreshToken).toStrictEqual(true);
   });
 
   it('error refresh with expired token', async () => {

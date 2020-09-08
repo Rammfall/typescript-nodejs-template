@@ -1,4 +1,17 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+// eslint-disable-next-line import/no-cycle
+import UserProfile from './UserProfile';
+// eslint-disable-next-line import/no-cycle
+import UserSession from './UserSession';
 
 @Entity({
   name: 'app_user',
@@ -30,4 +43,11 @@ export default class User extends BaseEntity {
     nullable: false,
   })
   password!: string;
+
+  @OneToMany(() => UserSession, (session) => session.user)
+  @JoinColumn()
+  sessions: UserSession[] | undefined;
+
+  @OneToOne(() => UserProfile, (profile) => profile.userId)
+  profile: UserProfile | undefined;
 }

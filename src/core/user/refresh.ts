@@ -1,6 +1,7 @@
 import UserSession from '../../db/entity/UserSession';
 import { ERROR_SESSION_ARE_EXPIRED } from '../../constants/user';
 import createSession from './session/createSession';
+import createSessionData from './session/createSessionData';
 
 export default async function refreshUser(
   refreshToken: string
@@ -11,9 +12,16 @@ export default async function refreshUser(
   });
 
   if (session && session.expiredDate > new Date()) {
-    const { user } = session;
-    await session.remove();
-    return await createSession(user);
+    const {
+      refreshToken: newRefreshToken,
+      accessToken,
+      expiredDate,
+    } = await createSessionData(session);
+
+    session.refreshToken = newRefreshToken;
+    session.accessToken = accessToken;
+    session.expiredDate = expiredDate;
+    return await session.save();
   }
 
   await session?.remove();

@@ -5,18 +5,51 @@ import {
   TableForeignKey,
 } from 'typeorm';
 
-export class userProfile1599396105958 implements MigrationInterface {
+export class appUser1598791352114 implements MigrationInterface {
+  // eslint-disable-next-line class-methods-use-this
   public async up(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.createTable(
+      new Table({
+        name: 'app_user',
+        columns: [
+          {
+            name: 'id',
+            type: 'bigserial',
+            isNullable: false,
+            isPrimary: true,
+          },
+          {
+            name: 'username',
+            type: 'varchar',
+            length: '30',
+            isNullable: false,
+            isUnique: true,
+          },
+          {
+            name: 'email',
+            type: 'varchar',
+            length: '320',
+            isNullable: false,
+            isUnique: true,
+          },
+          {
+            name: 'password',
+            type: 'text',
+            isNullable: false,
+          },
+        ],
+      })
+    );
     await queryRunner.createTable(
       new Table({
         name: 'user_profile',
         columns: [
           {
-            name: 'id',
-            type: 'serial',
+            name: 'userId',
+            type: 'bigserial',
             isPrimary: true,
-            generationStrategy: 'increment',
             isNullable: false,
+            isUnique: true,
           },
           {
             name: 'firstName',
@@ -43,11 +76,6 @@ export class userProfile1599396105958 implements MigrationInterface {
             name: 'photo',
             type: 'text',
           },
-          {
-            name: 'userId',
-            type: 'bigint',
-            isNullable: false,
-          },
         ],
       })
     );
@@ -64,7 +92,9 @@ export class userProfile1599396105958 implements MigrationInterface {
     );
   }
 
+  // eslint-disable-next-line class-methods-use-this
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('user_profile');
+    await queryRunner.dropTable('user_profile', true, true);
+    await queryRunner.dropTable('app_user', true, true);
   }
 }
