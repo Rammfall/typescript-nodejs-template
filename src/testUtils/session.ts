@@ -13,7 +13,7 @@ export async function createSession(
   user: User,
   timeToEndRefresh = REFRESH_TOKEN_EXPIRED,
   jwtSecret = JWT_ACCESS_SECRET,
-  expiresIn = JWT_ACCESS_EXPIRED
+  expiresIn: string | number = JWT_ACCESS_EXPIRED
 ): Promise<UserSession> {
   const { email, username, id } = user;
   const session: UserSession = new UserSession();
