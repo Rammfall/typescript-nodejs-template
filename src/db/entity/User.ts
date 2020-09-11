@@ -12,6 +12,10 @@ import {
 import UserProfile from './UserProfile';
 // eslint-disable-next-line import/no-cycle
 import UserSession from './UserSession';
+// eslint-disable-next-line import/no-cycle
+import UserTwoFA from './UserTwoFA';
+// eslint-disable-next-line import/no-cycle
+import RecoveryCode from './RecoveryCode';
 
 @Entity({
   name: 'app_user',
@@ -47,6 +51,13 @@ export default class User extends BaseEntity {
   @OneToMany(() => UserSession, (session) => session.user)
   @JoinColumn()
   sessions: UserSession[] | undefined;
+
+  @OneToMany(() => RecoveryCode, (code) => code.user)
+  @JoinColumn()
+  codes: RecoveryCode[] | undefined;
+
+  @OneToOne(() => UserTwoFA, (twofa) => twofa.user)
+  twoFA: UserTwoFA | undefined;
 
   @OneToOne(() => UserProfile, (profile) => profile.userId)
   profile: UserProfile | undefined;

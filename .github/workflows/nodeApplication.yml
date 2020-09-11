@@ -54,3 +54,9 @@ jobs:
         dbName: postgres
         dbPassword: postgres
       run: npm run coverage
+  audit:
+    name: Audit dependencies
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run audit
+      run: npm run audit

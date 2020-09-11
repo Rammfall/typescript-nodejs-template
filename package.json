@@ -129,6 +129,6 @@
     }
   },
   "eslintIgnore": [
-    "src/db/migration"
+    "src/db/migration/**/*.ts"
   ]
 }

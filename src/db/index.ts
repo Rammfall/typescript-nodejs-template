@@ -5,6 +5,8 @@ import User from './entity/User';
 import UserSession from './entity/UserSession';
 import { ENV } from '../config/application';
 import UserProfile from './entity/UserProfile';
+import UserTwoFA from './entity/UserTwoFA';
+import RecoveryCode from './entity/RecoveryCode';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -33,7 +35,7 @@ const connection: ConnectionOptions = {
   username,
   password,
   host,
-  entities: [User, UserSession, UserProfile],
+  entities: [User, UserSession, UserProfile, UserTwoFA, RecoveryCode],
   extra: {
     ssl,
   },
