@@ -13,6 +13,5 @@ export default async function createUser(
   user.username = username;
   user.email = email;
   user.password = await hash(password, BCRYPT_NUM);
-
   return await user.save();
 }

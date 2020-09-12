@@ -16,12 +16,19 @@ export default class RecoveryCode extends BaseEntity {
   @PrimaryGeneratedColumn()
   readonly id!: number;
 
-  @Column()
+  @Column({
+    type: 'uuid',
+  })
   code!: string;
 
-  @Column()
+  @Column({
+    type: 'bigint',
+  })
   readonly userId!: number;
 
-  @ManyToOne(() => User, (user) => user.codes)
+  @ManyToOne(() => User, (user) => user.codes, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   user!: User;
 }

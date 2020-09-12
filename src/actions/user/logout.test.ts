@@ -6,6 +6,7 @@ import { createUser } from '../../testUtils/dbUser';
 import application from '../../application';
 import { createSession } from '../../testUtils/session';
 import UserSession from '../../db/entity/UserSession';
+import setCookies from '../../testUtils/setCookies';
 
 describe('logout user', () => {
   let user: User;
@@ -25,9 +26,7 @@ describe('logout user', () => {
     const { refreshToken, accessToken } = await createSession(user);
     const result = await request(application)
       .post('/api/v1/user/logout/')
-      .set('Cookie', [
-        `accessToken=${accessToken};refreshToken=${refreshToken}`,
-      ]);
+      .set('Cookie', setCookies(accessToken, refreshToken));
 
     expect(result.status).toStrictEqual(200);
     expect(result.body.info).toStrictEqual('success');
@@ -44,9 +43,7 @@ describe('logout user', () => {
     );
     const result = await request(application)
       .post('/api/v1/user/logout/')
-      .set('Cookie', [
-        `accessToken=${accessToken};refreshToken=${refreshToken}`,
-      ]);
+      .set('Cookie', setCookies(accessToken, refreshToken));
 
     expect(result.status).toStrictEqual(400);
     expect(result.body.info).toStrictEqual('jwt expired');
@@ -59,9 +56,7 @@ describe('logout user', () => {
     await session.remove();
     const result = await request(application)
       .post('/api/v1/user/logout/')
-      .set('Cookie', [
-        `accessToken=${accessToken};refreshToken=${refreshToken}`,
-      ]);
+      .set('Cookie', setCookies(accessToken, refreshToken));
 
     expect(result.status).toStrictEqual(400);
     expect(result.body.info).toStrictEqual('Internal error, sorry:(');

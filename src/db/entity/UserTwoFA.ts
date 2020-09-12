@@ -3,17 +3,27 @@ import { BaseEntity, Column, Entity, OneToOne, PrimaryColumn } from 'typeorm';
 // eslint-disable-next-line import/no-cycle
 import User from './User';
 
-@Entity()
+@Entity({
+  name: 'user_2fa',
+})
 export default class UserTwoFA extends BaseEntity {
-  @PrimaryColumn({})
-  readonly userId!: number;
+  @PrimaryColumn()
+  userId!: number;
 
-  @Column()
-  status!: string;
+  @Column({
+    default: false,
+    type: 'boolean',
+  })
+  status!: boolean;
 
-  @Column()
+  @Column({
+    type: 'text',
+  })
   secretKey!: string;
 
-  @OneToOne(() => User, (user) => user.twoFA)
+  @OneToOne(() => User, (user) => user.twoFA, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   user!: User;
 }

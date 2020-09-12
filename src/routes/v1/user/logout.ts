@@ -15,8 +15,7 @@ logoutUserRouter.use(
       refreshToken: yup.string().uuid().required(),
     },
     'cookies'
-  ),
-  auth
+  )
 );
 logoutUserRouter.post('/', logoutUserHandler);
 

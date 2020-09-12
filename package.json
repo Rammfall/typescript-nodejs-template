@@ -15,7 +15,12 @@
     "windows:db:reboot": "npm run windows:db:revert && npm run windows:db:migrate",
     "db:migrate": "ts-node ./node_modules/.bin/typeorm migration:run",
     "db:revert": "ts-node ./node_modules/.bin/typeorm migration:revert",
-    "db:reboot": "npm run db:revert && npm run db:migrate"
+    "db:reboot": "npm run db:revert && npm run db:migrate",
+    "db:sync": "ts-node ./node_modules/.bin/typeorm schema:sync",
+    "db:drop": "ts-node ./node_modules/.bin/typeorm schema:drop",
+    "db:reset": "npm run db:drop && npm run db:sync",
+    "windows:db:sync": "ts-node node_modules\\typeorm\\cli.js db:sync",
+    "windows:db:drop": "ts-node node_modules\\typeorm\\cli.js schema:drop"
   },
   "repository": {
     "type": "git",

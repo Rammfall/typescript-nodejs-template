@@ -33,6 +33,9 @@ export default class UserSession extends BaseEntity {
   })
   readonly userId!: number;
 
-  @ManyToOne(() => User, (user: User) => user.id)
+  @ManyToOne(() => User, (user: User) => user.id, {
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
   user!: User;
 }

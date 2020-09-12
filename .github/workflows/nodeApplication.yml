@@ -44,7 +44,7 @@ jobs:
         dbUser: postgres
         dbName: postgres
         dbPassword: postgres
-      run: npm run db:migrate
+      run: npm run db:sync
     - name: Run linters
       run: npm run lint
     - name: Run tests

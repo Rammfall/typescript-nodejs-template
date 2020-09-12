@@ -60,5 +60,6 @@ export default class User extends BaseEntity {
   twoFA: UserTwoFA | undefined;
 
   @OneToOne(() => UserProfile, (profile) => profile.userId)
+  @JoinColumn()
   profile: UserProfile | undefined;
 }
