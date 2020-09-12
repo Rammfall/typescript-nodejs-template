@@ -2,7 +2,6 @@ import { Router } from 'express';
 import * as yup from 'yup';
 
 import validatePostBody from '../../../middlewares/validation';
-import auth from '../../../middlewares/auth';
 import logoutUserHandler from '../../../actions/user/logout';
 
 const logoutUserRouter: Router = Router();
