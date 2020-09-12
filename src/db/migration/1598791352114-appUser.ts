@@ -65,15 +65,18 @@ export class appUser1598791352114 implements MigrationInterface {
           {
             name: 'about',
             type: 'text',
+            isNullable: true,
           },
           {
             name: 'location',
             type: 'varchar',
             length: '70',
+            isNullable: true,
           },
           {
             name: 'photo',
             type: 'text',
+            isNullable: true,
           },
         ],
       })
