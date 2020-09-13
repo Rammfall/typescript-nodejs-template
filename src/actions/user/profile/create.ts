@@ -10,20 +10,24 @@ async function profileCreateHandler(req: Request, res: Response): Promise<any> {
   const user: User | undefined = await User.findOne({ id });
 
   if (user) {
-    const profile = await createProfile(
-      user,
-      firstName,
-      lastName,
-      about,
-      location
-    );
+    try {
+      const profile = await createProfile(
+        user,
+        firstName,
+        lastName,
+        about,
+        location
+      );
 
-    return res.json({
-      firstName: profile.firstName,
-      lastName: profile.lastName,
-      about: profile.about,
-      location: profile.location,
-    });
+      return res.json({
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        about: profile.about,
+        location: profile.location,
+      });
+    } catch (e) {
+      return res.status(400).json({ info: e.message });
+    }
   }
 
   return res.status(400).json({ info: ERROR_USER_NOT_EXIST });

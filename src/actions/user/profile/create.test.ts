@@ -7,6 +7,7 @@ import { createUser } from '../../../testUtils/dbUser';
 import application from '../../../application';
 import setCookies from '../../../testUtils/setCookies';
 import { createSession } from '../../../testUtils/session';
+import { ERROR_PROFILE_IS_EXIST } from '../../../constants/user';
 
 describe('check api creating profile', () => {
   let user: User;
@@ -36,5 +37,22 @@ describe('check api creating profile', () => {
 
     expect(result.status).toStrictEqual(200);
     expect(result.body.firstName).toStrictEqual(firstName);
+  });
+
+  it('user cant create profile more 1 time', async () => {
+    expect.assertions(2);
+
+    const firstName = name.firstName();
+    const { refreshToken, accessToken } = await createSession(user);
+    const result = await request(application)
+      .post('/api/v1/user/profile/create/')
+      .set('Cookie', setCookies(accessToken, refreshToken))
+      .send({
+        firstName,
+        lastName: name.lastName(),
+      });
+
+    expect(result.status).toStrictEqual(400);
+    expect(result.body.info).toStrictEqual(ERROR_PROFILE_IS_EXIST);
   });
 });
