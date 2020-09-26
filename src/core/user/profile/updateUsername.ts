@@ -10,6 +10,7 @@ export default async function updateUsername(
     // eslint-disable-next-line no-param-reassign
     user.username = username;
 
+    await user.save();
     return username;
   }
 

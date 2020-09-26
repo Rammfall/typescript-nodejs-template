@@ -20,11 +20,14 @@ describe('check change username', () => {
   });
 
   it('check success updating username', async () => {
-    expect.assertions(1);
+    expect.assertions(2);
     const oldUsername = user.username;
     const newUsername: string = await updateUsername(user, internet.userName());
 
     expect(oldUsername !== newUsername).toStrictEqual(true);
+    expect((await User.findOne({ email: user.email }))?.username).toStrictEqual(
+      newUsername
+    );
   });
 
   it('check error updating username', async () => {
