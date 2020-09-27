@@ -20,7 +20,7 @@ describe('api tests login', () => {
 
   beforeAll(async () => {
     await beforeAllHook();
-    user = await createUser(password);
+    user = await createUser({ password });
   });
 
   afterAll(async () => {
