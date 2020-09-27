@@ -1,5 +1,9 @@
 import { Router } from 'express';
 
-const profileShowRouter: Router = Router();
+import showProfileHandler from '../../../../actions/user/profile/show';
 
-export default profileShowRouter;
+const showProfileRouter: Router = Router();
+
+showProfileRouter.post('/', showProfileHandler);
+
+export default showProfileRouter;
