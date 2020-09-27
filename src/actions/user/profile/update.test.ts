@@ -1,9 +1,9 @@
 import request from 'supertest';
 import { name, internet, address } from 'faker';
 
+import application from '../../../application';
 import { afterAllHook, beforeAllHook } from '../../../testUtils/hooks';
 import { createUser } from '../../../testUtils/dbUser';
-import application from '../../../application';
 import setCookies from '../../../testUtils/setCookies';
 import { createSession } from '../../../testUtils/session';
 import UserProfile from '../../../db/entity/UserProfile';
