@@ -64,4 +64,4 @@ jobs:
       with:
         node-version: 12.x
     - name: Run audit
-      run: npm run audit
+      run: npm audit
