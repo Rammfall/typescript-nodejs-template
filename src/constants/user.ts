@@ -11,3 +11,4 @@ export const ERROR_PASSWORD_NOT_CORRECT = 'Password not correct';
 export const ERROR_SESSION_ARE_EXPIRED = 'Session are expired';
 export const ERROR_USER_NOT_EXIST = 'User not exist';
 export const ERROR_PROFILE_IS_EXIST = 'Profile is exist';
+export const SUCCESS = 'success';

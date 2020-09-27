@@ -1,7 +1,5 @@
-import { hash } from 'bcrypt';
-
 import User from '../../db/entity/User';
-import { BCRYPT_NUM } from '../../config/application';
+import hashPassword from './logic/hashPassword';
 
 export default async function createUser(
   username: string,
@@ -12,6 +10,6 @@ export default async function createUser(
 
   user.username = username;
   user.email = email;
-  user.password = await hash(password, BCRYPT_NUM);
+  user.password = await hashPassword(password);
   return await user.save();
 }
