@@ -13,6 +13,8 @@ on:
       - 'hotfix/**'
     paths:
       - 'src/**'
+  schedule:
+    - cron: '* 0 * * *'
 
 jobs:
   build:
