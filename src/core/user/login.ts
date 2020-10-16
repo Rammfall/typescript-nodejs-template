@@ -7,12 +7,13 @@ import { isPasswordCorrect } from './check/isPasswordCorrect';
 export default async function loginUser(
   email: string,
   password: string,
-  device: string
+  device: string,
+  ip: string
 ): Promise<UserSession> {
   const user: User | undefined = await User.findOne({ email });
 
   if (user && (await isPasswordCorrect(user, password))) {
-    return await createSession(user, device);
+    return await createSession(user, device, ip);
   }
 
   throw new Error(ERROR_PASSWORD_NOT_CORRECT);

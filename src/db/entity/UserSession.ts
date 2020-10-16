@@ -9,8 +9,20 @@ import User from './User';
 export default class UserSession extends BaseEntity {
   @PrimaryColumn({
     type: 'uuid',
+    unique: true,
+  })
+  sessionIdentifier!: string;
+
+  @Column({
+    type: 'uuid',
+    unique: true,
   })
   refreshToken!: string;
+
+  @Column({
+    type: 'text',
+  })
+  ipAddress!: string;
 
   @Column({
     type: 'text',

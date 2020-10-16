@@ -18,6 +18,8 @@ export async function createSession(
   const { email, username, id } = user;
   const session: UserSession = new UserSession();
 
+  session.sessionIdentifier = v4();
+  session.ipAddress = 'localhost';
   session.user = user;
   session.refreshToken = v4();
   session.device = 'chrome';

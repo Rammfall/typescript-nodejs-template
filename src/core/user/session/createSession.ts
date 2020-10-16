@@ -11,11 +11,14 @@ import {
 
 export default async function createSession(
   user: User,
-  device: string
+  device: string,
+  ip: string
 ): Promise<UserSession> {
   const { username, email, id } = user;
   const session: UserSession = new UserSession();
 
+  session.ipAddress = ip;
+  session.sessionIdentifier = v4();
   session.accessToken = await sign(
     {
       username,
